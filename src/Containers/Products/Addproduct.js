@@ -102,7 +102,7 @@ export default function Addproduct(props) {
 
 
                 <div className="col-md-12 text-right">
-                    <button class="btn btn-outline-primary "> Save Product </button>
+                    <button class="btn btn-outline-primarygi "> Save Product </button>
                 </div>
             </div>
 
