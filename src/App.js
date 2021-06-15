@@ -17,7 +17,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 export default function App() {
   return (
     <Router>
-      <Route path="/" component={Login}></Route>
+      <Route path="/" component={Login} exact></Route>
       <Route path="/dashboard" component={Dashboard}></Route>
       <Route path="/categories" component={Categorylist}></Route>
       <Route path="/brands" component={Brandlist}></Route>

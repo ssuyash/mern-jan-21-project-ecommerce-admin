@@ -15,12 +15,14 @@ const categories = [
     {id:"kukasdflkajdsf", name:"Mobile", parent:"Electronics"},
     {id:"kukdfflkajdsf", name:"Mobile", parent:"Electronics"},
     {id:"kuefkflkajdsf", name:"Mobile", parent:"Electronics"},
-    {id:"kukgdflkajdsf", name:"Mobile", parent:"Electronics"},
+    {id:"kukgdflkajdsf", name:"T-shirt", parent:"Fashion"},
 ]
 
 export default function Categorylist() {
     const [showAddForm, changeShowAddForm] = useState(false)
     const [showEditForm, changeShowEditForm] = useState(false)
+
+    const [catInEdit, setCatInEdit] = useState(null)
     return (
         <Structure>
             <div className="row">
@@ -49,13 +51,14 @@ export default function Categorylist() {
                             {categories.map(category =>{
                                 return(<tr key={category.id}>
                                     <th scope="row">1</th>
-                                    <td>Mobile</td>
-                                    <td>Electronics</td>
+                                    <td>{category.name}</td>
+                                    <td>{category.parent}</td>
                                     <td className="d-flex justify-content-around" >
                                         <button type="button" 
                                         class="btn btn-sm btn-primary" 
                                         onClick={()=>{
                                             changeShowEditForm(true)
+                                            setCatInEdit(category)
                                             changeShowAddForm(false)
                                         }}
                                         >
@@ -97,7 +100,7 @@ export default function Categorylist() {
             
             <div className="col-md-5  ml-5 mt-5">
                 {showAddForm && <AddCategory/>}
-                {showEditForm && <EditCategory/>}
+                {showEditForm && <EditCategory cat={catInEdit} />}
             </div>
             
             </div>

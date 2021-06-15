@@ -3,11 +3,16 @@ import Validator from '../validations'
 
 export default function Login() {
     let [email , setEmail] = useState("")
-    let [emialErr, setEmailErr] = useState(false)
+    let [emailErr, setEmailErr] = useState(false)
+
+
+    let [pwd , setPwd] = useState("")
+    let [pwdErr, setPwdErr] = useState(false)
 
 
     let onSubmitLoginForm = ()=>{
          setEmailErr(!Validator.email.test(String(email).toLowerCase()))
+         setPwdErr(!Validator.emptyStr.test(String(pwd).toLowerCase()))
     }
     return (
         <div className="login-container d-flex justify-content-center align-items-center">
@@ -25,12 +30,21 @@ export default function Login() {
                         onChange={(e)=>setEmail(e.target.value)}
                         />
                         <small id="emailHelp" className="form-text text-muted text-danger">
-                            {emialErr && "Invalid Email Entered"}
+                            {emailErr && "Invalid Email Entered"}
                         </small>
                     </div>
                     <div className="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" />
+                        <input 
+                        type="password" 
+                        className="form-control" 
+                        id="exampleInputPassword1" 
+                        value = {pwd}
+                        onChange={(e)=>setPwd(e.target.value)}
+                        />
+                        <small id="emailHelp" className="form-text text-muted text-danger">
+                            {pwdErr && "Password can not be empty"}
+                        </small>
                     </div>
                   
                     <button 
